@@ -101,7 +101,7 @@ export const updatePassword = async (req:Request, res:Response) => {
         return res.status(500).json(
             commonService.returnRequest(statusType.ChangePasswordCode.ERROR,{
                 msg:"err"
-            })
+            }) 
         )
     }
 };
