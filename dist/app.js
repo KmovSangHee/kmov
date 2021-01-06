@@ -8,7 +8,10 @@ const body_parser_1 = __importDefault(require("body-parser"));
 //import bluebird from "bluebird";
 const mongoose_1 = __importDefault(require("mongoose"));
 const secrets_1 = require("./util/secrets");
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const router_1 = __importDefault(require("./router"));
+const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = express_1.default();
@@ -24,6 +27,18 @@ mongoose_1.default.connect(mongoUrl, {
 app.set("port", process.env.PORT);
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
+const options = {
+    swaggerDefinition: {
+        info: {
+            title: "Example API",
+            version: "0.1.0",
+            description: "Example API Server with Typescript"
+        },
+    },
+    apis: [path_1.default.resolve(__dirname, "./router/*.ts")],
+};
+const specs = swagger_jsdoc_1.default(options);
+app.use("/swagger", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs));
 app.use("/", router_1.default);
 exports.default = app;
 //# sourceMappingURL=app.js.map

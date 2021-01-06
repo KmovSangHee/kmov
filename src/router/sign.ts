@@ -9,6 +9,7 @@ import {
 
 const router = Router();
 
+
 router.post("/signin", signValidationChains, signController.signIn);
 router.post("/signup", signUpValidationChains, signController.requestSignUp);
 router.patch("/update-password", updatePasswordValidationChains, signController.updatePassword);
