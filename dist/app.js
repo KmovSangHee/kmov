@@ -29,13 +29,14 @@ app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 const options = {
     swaggerDefinition: {
+        swagger: "2.0",
         info: {
             title: "Example API",
             version: "0.1.0",
             description: "Example API Server with Typescript"
         },
     },
-    apis: [path_1.default.resolve(__dirname, "./router/*.ts")],
+    apis: [path_1.default.resolve(__dirname, "./router/*.js")],
 };
 const specs = swagger_jsdoc_1.default(options);
 app.use("/swagger", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs));

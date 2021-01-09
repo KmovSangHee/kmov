@@ -35,13 +35,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const options = {
     swaggerDefinition:{
+        swagger: "2.0",
         info:{
             title: "Example API",
             version: "0.1.0",
             description: "Example API Server with Typescript"
         },
     },
-    apis:[path.resolve(__dirname, "./router/*.ts")],
+    apis:[path.resolve(__dirname, "./router/*.js")],
 };
 
 const specs = swaggerJSDoc(options);

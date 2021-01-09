@@ -22,6 +22,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const apiController = __importStar(require("../controllers/api"));
 const router = express_1.Router();
+/**
+ * @swagger
+ *  /hello:
+ *      get:
+ *          summary: hello
+ *          tags: [example]
+ *          responses:
+ *              200:
+ *                  description: board of selected id column list
+ */
 router.get("/hello", apiController.getHello);
 exports.default = router;
 //# sourceMappingURL=example.js.map

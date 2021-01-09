@@ -8,6 +8,12 @@ const router = Router();
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
+/**
+ * @swagger
+ * tags:
+ *  name: example
+ *  description: 테스트용
+ */
 router.use("/example", exampleRouter);
 
 /**
